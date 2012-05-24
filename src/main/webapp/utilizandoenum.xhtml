@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:h="http://java.sun.com/jsf/html" 
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Utilizando Enum</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h1>Exemplo Utilizando Enum</h1>
+            <h:panelGrid id="panelGrid1" columns="3" >
+                <h:outputLabel value="Nível de Acesso:"/>
+                <h:selectOneMenu id="nivelAcesso" 
+                                 value="#{meuBean.nivelAcesso}"
+                                 required="true"
+                                 requiredMessage="Campo obrigatório">
+                    <f:selectItem itemLabel="Selecione" />
+                    <f:selectItems value="#{meuBean.nivelAcessos}" 
+                                   var="n" 
+                                   itemLabel="#{n}" 
+                                   itemValue="#{n}" />
+                </h:selectOneMenu>
+                <h:message for="nivelAcesso" />
+            </h:panelGrid>
+
+            <h:commandButton value="Selecionar" />
+
+            <h:panelGrid id="panelGrid2" columns="2" rendered="#{meuBean.nivelAcesso ne null}" >
+                <h:outputText value="Você acabou de selecionar o Nível de Acesso: " />
+                <h:outputText value="#{meuBean.nivelAcesso.toString()}" />
+            </h:panelGrid>
+        </h:form>
+    </h:body>
+</html>
